@@ -17,6 +17,8 @@ After the demo application is started, it is be available in URL http://localhos
 
 ## Downloading gherkin feature files from Jira
 
+Update ASSERTTHAT_ACCESS_KEY and ASSERTTHAT_SECRET_KEY in `download_features.py` then run
+
 ```
 python download_features.py
 ```
@@ -42,7 +44,7 @@ python generate_report.py
 
 ## Uploading cucumber report to Jira
 
-To uploadgenerated  `cucumber.json` 
+To uploadgenerated  `cucumber.json` update ASSERTTHAT_ACCESS_KEY and ASSERTTHAT_SECRET_KEY in `upload_report.py` then run
 ```
 python upload_report.py
 ```
@@ -51,11 +53,13 @@ The following feature was uploaded to Jira in order to establish results linking
 
 ```
 # language: en
-Feature: Feature Login
+Feature: Login
+
+    A test suite with a single Gherkin style test.
 
     @AUTOMATED 
     Scenario: Valid Login
-        Given browser is opened to login page
-        When user "demo" logs in with password "mode"
-        Then welcome page should be open
+            Given browser is opened to login page
+            When user "demo" logs in with password "mode"
+            Then welcome page should be open
 ```
