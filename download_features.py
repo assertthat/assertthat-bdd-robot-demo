@@ -2,7 +2,7 @@ from assertthat_bdd.jira_integration import JiraConnector
 
 JiraConnector.download_features(
     # Jira project id e.g. 10001
-    project_id='10005',
+    project_id='PROJECT_ID',
     # Optional can be supplied as environment variable ASSERTTHAT_ACCESS_KEY
     access_key='ASSERTTHAT_ACCESS_KEY',
     # Optional can be supplied as environment variable ASSERTTHAT_SECRET_KEY

@@ -23,11 +23,13 @@ def strip_keyword(kw):
     return re.sub(r"^(Given|When|Then|And)\s", "", kw)
 
 
-def populate_steps(kw):
+def populate_steps(kw, test):
     step = {}
     result = {}
     step['name'] = strip_keyword(kw['@name'])
     result['status'] = get_status(kw['status']['@status'])
+    if kw['status']['@status'] == 'FAIL':
+        result['error_message'] = test['status']['#text']
     step['result'] = result
     step['keyword'] = get_keyword(kw['@name'])
     step['line'] = 0
@@ -39,15 +41,14 @@ def populate_elements(test):
     element = {}
     steps = []
     element['name'] = test['@name']
-    element['description'] = test['status']['@status']
     element['type'] = 'scenario'
     element['keyword'] = 'Scenario'
     try:
         for kw in test['kw']:
-            steps.append(populate_steps(kw))
+            steps.append(populate_steps(kw, test))
     except TypeError:
         # tests is not iterable
-        steps.append(populate_steps(kw))
+        steps.append(populate_steps(kw, test))
     element['steps'] = steps
     return element
 
