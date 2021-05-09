@@ -80,12 +80,15 @@ with open("output.xml", "r") as myfile:
 
     all_data = xmltodict.parse(xml_input)['robot']
     report = []
-    data = parse_suites(all_data['suite']['suite'])
-    for item in all_data['suite']['suite']['metadata']['item']:
+    suite = all_data['suite']
+    if 'suite' in suite:
+        suite = all_data['suite']['suite']
+    data = parse_suites(suite)
+    for item in suite['metadata']['item']:
         if "Feature" == item['@name']:
             data['name'] =  item['#text']
-    data['description'] = all_data['suite']['suite']['doc']
-    data['id'] = all_data['suite']['suite']['@id']
+    data['description'] = suite['doc']
+    data['id'] = suite['@id']
     data['keyword'] = "Feature"
     data['uri'] = all_data['suite']['@source']
     report.append(data)
