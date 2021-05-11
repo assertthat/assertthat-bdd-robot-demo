@@ -84,7 +84,7 @@ with open("output.xml", "r") as myfile:
     if 'suite' in suite:
         suite = all_data['suite']['suite']
     data = parse_suites(suite)
-    for item in suite['metadata']['item']:
+    for item in suite['meta']:
         if "Feature" == item['@name']:
             data['name'] =  item['#text']
     data['description'] = suite['doc']
