@@ -32,15 +32,11 @@ pipeline {
             }
         }
 
-        stage('Generate report') {
-            steps {
-                bat 'python generate_report.py'
-            }
-        }
-
     }
     post{
         always{
+                //Generate report
+                bat 'python generate_report.py'
                 //Upload test results
                 assertthatBddReport(jiraServerUrl: 'http://assertthat-jira.com/jira', credentialsId: '10000', jsonReportFolder: 'report', jsonReportIncludePattern: '**/*.json', projectId: '10000', runName: 'Robot test run', type: 'cucumber',proxyURI:'', proxyUsername: '',proxyPassword: '')
         }
