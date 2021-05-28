@@ -10,7 +10,7 @@ pipeline {
                 // Clean before build
                 cleanWs()
                 //Download feature files
-                scm checkout
+                checkout scm
                 bat 'pip install -r requirements.txt'
             }
         }
