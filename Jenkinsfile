@@ -45,3 +45,4 @@ pipeline {
                 assertthatBddReport(credentialsId: '10000', jsonReportFolder: 'report', jsonReportIncludePattern: '**/*.json', projectId: '10000', runName: 'Robot test run', type: 'cucumber')
         }
     }
+}
