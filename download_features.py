@@ -8,10 +8,10 @@ JiraConnector.download_features(
     # Optional can be supplied as environment variable ASSERTTHAT_SECRET_KEY
     secret_key='admin',
 
-    jira_server_url='http://assertthat-jira.com/jira',
+    #jira_server_url='http://assertthat-jira.com/jira',
     # Optional - default ./features
     output_folder='./login_tests',
-     tags='@robot',
+    tags='@robot',
     # Optional - all features downloaded by default - should be a valid JQL
     # jql = 'project = XX AND key in ('XXX-1')',
     # Optional - default automated (can be one of: manual/automated/both)

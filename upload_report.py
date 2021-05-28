@@ -7,7 +7,7 @@ JiraConnector.upload_report(
     access_key='admin',
     # Optional can be supplied as environment variable ASSERTTHAT_SECRET_KEY
     secret_key='admin',
-    jira_server_url='http://assertthat-jira.com/jira',
+    # jira_server_url='http://assertthat-jira.com/jira',
     # The name of the run - default 'Test run dd MMM yyyy HH:mm:ss'
     run_name= 'Python Tests Run',
     # Json report folder - default ./reports
