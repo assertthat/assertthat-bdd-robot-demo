@@ -2,11 +2,12 @@ from assertthat_bdd.jira_integration import JiraConnector
 
 JiraConnector.upload_report(
     # Jira project id e.g. 10001
-    project_id='PROJECT_ID',
+    project_id='10000',
     # Optional can be supplied as environment variable ASSERTTHAT_ACCESS_KEY
-    access_key='ASSERTTHAT_ACCESS_KEY',
+    access_key='admin',
     # Optional can be supplied as environment variable ASSERTTHAT_SECRET_KEY
-    secret_key='ASSERTTHAT_SECRET_KEY',
+    secret_key='admin',
+    jira_server_url='http://assertthat-jira.com/jira',
     # The name of the run - default 'Test run dd MMM yyyy HH:mm:ss'
     run_name= 'Python Tests Run',
     # Json report folder - default ./reports

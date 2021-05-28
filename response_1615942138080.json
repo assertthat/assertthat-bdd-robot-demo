@@ -1,0 +1,76 @@
+[
+  {
+    "id": 5,
+    "executionId": 1,
+    "executionSetName": "canary_smoke_test",
+    "requestDate": 1615940712.74,
+    "executionDate": 1615940906.178,
+    "pageRenderTimeout": 30,
+    "rerunNumber": 0,
+    "timeout": 5,
+    "mobilePlatformType": "Android API 26 (Oreo) - LG Nexus 5X",
+    "testCaseName": "view_doctor_details",
+    "testCaseDescription": null,
+    "testCaseSuiteName": "view_doctor_details",
+    "iteration": 0,
+    "dataSets": {
+      "canary_env": "canary_pilot"
+    },
+    "status": "FAIL_SKIP",
+    "browserType": "FIRE_FOX",
+    "executionType": "EXECUTION_SET",
+    "executor": "EC2AMAZ-CDJ1KFH#10.1.11.28#35.169.43.15",
+    "executionStartTimestamp": 1615940862135,
+    "executionEndTimestamp": 1615940906178,
+    "executionStartDate": 1615940862.135,
+    "executionEndDate": 1615940906.178,
+    "duration": 26,
+    "actualDuration": 44043,
+    "pool": "default",
+    "state": "COMPLETED",
+    "videoUrl": "https://subject7-prod-artifacts.s3.amazonaws.com/technology_department/videos/view_doctor_details_5_2021-03-16_20-27-41.mp4",
+    "screenShotUrl": null,
+    "logUrl": "https://subject7-prod-artifacts.s3.amazonaws.com/technology_department/logs/view_doctor_details_5_2021-03-16_20-27-41.txt",
+    "message": "Test passed successfully, duration = 25953",
+    "variables": {
+      "@System.os": "Windows"
+    }
+  },
+  {
+    "id": 4,
+    "executionId": 1,
+    "executionSetName": "canary_smoke_test",
+    "requestDate": 1615940712.74,
+    "executionDate": 1615940904.099,
+    "pageRenderTimeout": 30,
+    "rerunNumber": 0,
+    "timeout": 5,
+    "mobilePlatformType": "Android API 26 (Oreo) - LG Nexus 5X",
+    "testCaseName": "create_doctor_details",
+    "testCaseDescription": null,
+    "testCaseSuiteName": "create_doctor_details",
+    "iteration": 0,
+    "dataSets": {
+      "canary_env": "canary_pilot"
+    },
+    "status": "PASS",
+    "browserType": "FIRE_FOX",
+    "executionType": "EXECUTION_SET",
+    "executor": "EC2AMAZ-CDJ1KFH#10.1.11.243#35.169.43.15",
+    "executionStartTimestamp": 1615940860011,
+    "executionEndTimestamp": 1615940904099,
+    "executionStartDate": 1615940860.011,
+    "executionEndDate": 1615940904.099,
+    "duration": 20,
+    "actualDuration": 44088,
+    "pool": "default",
+    "state": "COMPLETED",
+    "videoUrl": "https://subject7-prod-artifacts.s3.amazonaws.com/technology_department/videos/create_doctor_details_4_2021-03-16_20-27-39.mp4",
+    "screenShotUrl": null,
+    "logUrl": "https://subject7-prod-artifacts.s3.amazonaws.com/technology_department/logs/create_doctor_details_4_2021-03-16_20-27-39.txt",
+    "message": "Test passed successfully, duration = 19823",
+    "variables": {
+      "@System.os": "Windows"
+    }
+  }
+]
