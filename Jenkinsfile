@@ -17,7 +17,7 @@ pipeline {
         stage('Download features') {
             steps {
                 //Download feature files
-                assertthatBddFeatures(credentialsId: '10000', jql: '', tags: '@robot',  mode: 'automated', outputFolder: 'login_tests', projectId: '10000', proxyURI:'', proxyUsername: '',proxyPassword: '')
+                assertthatBddFeatures(jiraServerUrl: 'http://assertthat-jira.com/jira', credentialsId: '10000', jql: '', tags: '@robot',  mode: 'automated', outputFolder: 'login_tests', projectId: '10000', proxyURI:'', proxyUsername: '',proxyPassword: '')
             }
         }
         stage('Convert Features into Robot') {
@@ -42,7 +42,7 @@ pipeline {
     post{
         always{
                 //Upload test results
-                assertthatBddReport(credentialsId: '10000', jsonReportFolder: 'report', jsonReportIncludePattern: '**/*.json', projectId: '10000', runName: 'Robot test run', type: 'cucumber',proxyURI:'', proxyUsername: '',proxyPassword: '')
+                assertthatBddReport(jiraServerUrl: 'http://assertthat-jira.com/jira', credentialsId: '10000', jsonReportFolder: 'report', jsonReportIncludePattern: '**/*.json', projectId: '10000', runName: 'Robot test run', type: 'cucumber',proxyURI:'', proxyUsername: '',proxyPassword: '')
         }
     }
 }
