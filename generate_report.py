@@ -1,6 +1,8 @@
 import xmltodict
 import re
 import json
+from datetime import datetime
+
 
 def get_status(robot_status):
     mapping = {
@@ -8,6 +10,7 @@ def get_status(robot_status):
         'FAIL': "failed",
     }
     return mapping.get(robot_status, "Invalid status")
+
 
 def get_keyword(kw):
     if re.match(r"^Given.+", kw):
@@ -18,12 +21,14 @@ def get_keyword(kw):
         return "Then "
     if re.match(r"^And.+", kw):
         return "And "
+    return ""
+
 
 def strip_keyword(kw):
     return re.sub(r"^(Given|When|Then|And)\s", "", kw)
 
 
-def populate_steps(kw, test):
+def populate_steps(kw, test, ind):
     step = {}
     result = {}
     step['name'] = strip_keyword(kw['@name'])
@@ -32,8 +37,14 @@ def populate_steps(kw, test):
         result['error_message'] = test['status']['#text']
     step['result'] = result
     step['keyword'] = get_keyword(kw['@name'])
-    step['line'] = 0
+    step['line'] = ind + 4
     step['match'] = {}
+    format = '%Y%m%d %H:%M:%S'
+    startDateTime = datetime.strptime(kw['status']['@starttime'].split('.')[0], format)
+    endDateTime = datetime.strptime(kw['status']['@endtime'].split('.')[0], format)
+    diff = endDateTime.timestamp() - startDateTime.timestamp()
+    final_time = diff * 1000000000
+    step['result']['duration'] = final_time
     return step
 
 
@@ -43,9 +54,17 @@ def populate_elements(test):
     element['name'] = test['@name']
     element['type'] = 'scenario'
     element['keyword'] = 'Scenario'
+    element['tags'] = []
     try:
-        for kw in test['kw']:
-            steps.append(populate_steps(kw, test))
+        for item in test['tag']:
+            tag = {}
+            tag["name"] = "@"+ item
+            element['tags'].append(tag)
+    except:
+        a = 1
+    try:
+        for ind, kw in enumerate(test['kw']):
+            steps.append(populate_steps(kw, test, ind))
     except TypeError:
         # tests is not iterable
         steps.append(populate_steps(kw, test))
@@ -84,9 +103,7 @@ with open("output.xml", "r") as myfile:
     if 'suite' in suite:
         suite = all_data['suite']['suite']
     data = parse_suites(suite)
-    for item in suite['meta']:
-        if "Feature" == item['@name']:
-            data['name'] =  item['#text']
+    data['name'] = suite['@name']
     data['description'] = suite['doc']
     data['id'] = suite['@id']
     data['keyword'] = "Feature"
